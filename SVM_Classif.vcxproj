@@ -146,9 +146,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CData.h" />
+    <ClInclude Include="CSVM.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CData.cpp" />
+    <ClCompile Include="CSVM.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
