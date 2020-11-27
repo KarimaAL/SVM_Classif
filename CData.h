@@ -5,6 +5,7 @@ using namespace cv;
 class CData
 {
 public:
+	Mat m_image;
 	Mat createData();
 };
 
