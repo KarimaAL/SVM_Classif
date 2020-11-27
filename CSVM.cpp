@@ -10,40 +10,49 @@
 using namespace cv::ml;
 using namespace cv;
 using namespace std;
-void CSVM::svmTraining(Mat trainingDataMat, Mat labelsMat, Mat img)
+
+void CSVM::svmTraining(Mat img)
 {
-    Mat trainingData = trainingDataMat;
-    Mat labels = labelsMat;
+
     Mat image = img;
+    // Set up training data
+    int labels[10] = { 1, -1, -1, 1, 1, -1, 1, -1, -1, 1 };
+    float trainingData[10][2] = { {255, 10}, {480, 400}, {350, 450}, {255, 255}, {200, 401}, {400, 50}, {100, 80}, {450, 250}, {501, 10}, {50, 300} };
+    Mat trainingDataMat(10, 2, CV_32F, trainingData);
+    Mat labelsMat(10, 1, CV_32SC1, labels);
 
     // Train the SVM
     Ptr<SVM> svm = SVM::create();
     svm->setType(SVM::C_SVC);
     svm->setKernel(SVM::LINEAR);
     svm->setTermCriteria(TermCriteria(TermCriteria::MAX_ITER, 100, 1e-6));
-    svm->train(trainingData, ROW_SAMPLE, labels);
+    svm->train(trainingDataMat, ROW_SAMPLE, labelsMat);
+
     //svm->save("svm_params.xml");
+    int width = 512, height = 512;
+    Mat imageTest = Mat::zeros(height, width, CV_8UC3);
 
     // Show the decision regions given by the SVM
     Vec3b green(0, 255, 0), blue(255, 0, 0), red(0, 0, 255);
-    for (int i = 0; i < image.rows; i++)
+    for (int i = 0; i < imageTest.rows; i++)
     {
-        for (int j = 0; j < image.cols; j++)
+        for (int j = 0; j < imageTest.cols; j++)
         {
             Mat sampleMat = (Mat_<float>(1, 2) << j, i);
             float response = svm->predict(sampleMat);
             if (response == 1)
-                image.at<Vec3b>(i, j) = green;
+                imageTest.at<Vec3b>(i, j) = green;
             else if (response == -1)
-                image.at<Vec3b>(i, j) = blue;
+                imageTest.at<Vec3b>(i, j) = blue;
             else
-                image.at<Vec3b>(i, j) = red;
+                imageTest.at<Vec3b>(i, j) = red;
         }
 
     }
+    Mat Result = imageTest + image;
     String windowName = "svm"; //Name of the window
     namedWindow(windowName); // Create a window
-    imshow(windowName, image); // Show our image inside the created window.
+    imshow(windowName, Result); // Show our image inside the created window.
     waitKey(0); // Wait for any keystroke in the window
     destroyWindow(windowName); //destroy the created window
 

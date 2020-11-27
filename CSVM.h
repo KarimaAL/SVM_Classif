@@ -5,7 +5,7 @@
 class CSVM
 {
 public:
-	void svmTraining(Mat trainingDataMat, Mat labelsMat, Mat image);
+	void svmTraining(Mat image);
 	CData m_data;
 };
 
