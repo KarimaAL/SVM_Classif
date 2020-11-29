@@ -146,10 +146,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CData.h" />
+    <ClInclude Include="CDigitDataLoading.h" />
     <ClInclude Include="CSVM.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CData.cpp" />
+    <ClCompile Include="CDigitDataLoading.cpp" />
     <ClCompile Include="CSVM.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
