@@ -13,10 +13,11 @@ int main(int, char**)
    // m_data.createData();
 	//m_svm.svmTraining(m_data.m_image);
 
-	CDigitDataLoading image, organize;
+	CDigitDataLoading image, organize,g, dImg;
 	CDigitDataLoading deskewImage;
 	Mat img = image.readMyData();
-	organize.organizingData(img);
-	deskewImage.deskew(img);
+	auto f = organize.organizingData(img);
+	g.labelAssigning(f.trainCells,f.testCells);
+	//deskewImage.deskew(img);
 	return 0;
 }

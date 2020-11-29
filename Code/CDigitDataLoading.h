@@ -12,6 +12,11 @@
 using namespace cv;
 using namespace std;
 
+struct mystruct {
+	vector<Mat> trainCells;
+	vector<Mat> testCells;
+};
+
 class CDigitDataLoading
 {
 public:
@@ -19,12 +24,17 @@ public:
 	~CDigitDataLoading(); // destructor
 	Mat readMyData();
 	Mat deskew(Mat& img);
-	void organizingData(Mat& img);
+	mystruct organizingData(Mat& img);
+	vector<Mat> labelAssigning(vector<Mat>& traincells, vector<Mat>& testcells);
 	int SZ = 20; //Each image is 20×20 grayscale
 	float affineFlags = WARP_INVERSE_MAP | INTER_LINEAR;
 	vector<Mat> trainCells;
 	vector<Mat> testCells;
 	vector<int> trainLabels;
 	vector<int> testLabels;
+	vector<Mat> deskewedTrainCells;
+	vector<Mat> deskewedTestCells;
+	Mat deskewedImg;
+
 };
 
