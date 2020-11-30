@@ -1,6 +1,7 @@
 #include "CData.h"
 #include "CSVM.h"
 #include "CDigitDataLoading.h"
+#include "CHOG.h"
 #include<iostream>
 
 using namespace std;
@@ -13,11 +14,11 @@ int main(int, char**)
    // m_data.createData();
 	//m_svm.svmTraining(m_data.m_image);
 
-	CDigitDataLoading image, organize,g, dImg;
-	CDigitDataLoading deskewImage;
+	CDigitDataLoading image, organize,labels;
+	CHOG createHog;
 	Mat img = image.readMyData();
-	auto f = organize.organizingData(img);
-	g.labelAssigning(f.trainCells,f.testCells);
-	//deskewImage.deskew(img);
+	mystruct dataDiv = organize.organizingData(img);
+	mystructdeskew deskewData = labels.labelAssigning(dataDiv.trainCells, dataDiv.testCells);
+	createHog.CreateTrainTestHOG(deskewData.deskewedTrCells, deskewData.deskewedTsCells);
 	return 0;
 }
