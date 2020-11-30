@@ -1,5 +1,15 @@
 #include "CHOG.h"
 #include "CDigitDataLoading.h"
+#include "CSVMClassifier.h"
+#include <iostream>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include "opencv2/objdetect.hpp"
+#include <opencv2/ml.hpp>
+
+using namespace cv::ml;
+using namespace cv;
+using namespace std;
 
 HOGDescriptor hog(
     Size(20, 20), //winSize
@@ -15,7 +25,7 @@ HOGDescriptor hog(
     64,//nlevels=64
     1);
 
-void CHOG::CreateTrainTestHOG(vector<Mat> deskewedTrainCells, vector<Mat> deskewedTestCells)
+mystructhogT CHOG::CreateTrainTestHOG(vector<Mat> deskewedTrainCells, vector<Mat> deskewedTestCells, vector<int> m_trainLabels, vector<int> m_testLabels)
 {
     vector< float >  descriptorstrain; //variable to store the HOG features
     vector< float > descriptorstest;
@@ -34,10 +44,11 @@ void CHOG::CreateTrainTestHOG(vector<Mat> deskewedTrainCells, vector<Mat> deskew
         testHOG.push_back(descriptorstest);
     }
 
-    ConvertVectortoMatrix(trainHOG, testHOG);
+    ConvertVectortoMatrix(trainHOG, testHOG, m_trainLabels, m_testLabels);
+    return mystructhogT{ trainHOG, testHOG};
 }
 
-void CHOG::ConvertVectortoMatrix(vector<vector<float> >& trainHOG, vector<vector<float> >& testHOG)
+Mat CHOG::ConvertVectortoMatrix(vector<vector<float> >& trainHOG, vector<vector<float> >& testHOG, vector<int> m_trainLabels, vector<int> m_testLabels)
 {
     int descriptor_size = trainHOG[0].size();
     Mat trainMat(trainHOG.size(), descriptor_size, CV_32FC1);
@@ -65,4 +76,16 @@ void CHOG::ConvertVectortoMatrix(vector<vector<float> >& trainHOG, vector<vector
     imshow(windowName, testMat); // Show our image inside the created window.
     waitKey(0); // Wait for any keystroke in the window
     destroyWindow(windowName); //destroy the created window
+    //return mystructHogMat{ trainMat, testMat };
+    Mat testResponse;
+    CSVMClassifier m_train;
+    cout << "size of train labels :" << m_trainLabels.size() << endl;
+    Mat m_response = m_train.SVMtrain(trainMat, m_trainLabels, testResponse, testMat);
+    float count = 0;
+    float accuracy = 0;
+    CSVMClassifier ev;
+    //CSVMClassifier m_response;
+    float acc =  ev.SVMevaluate(m_response, count, accuracy, m_testLabels);
+    cout << "Accuracy        : " << acc << "%" << endl;
+    return (trainMat, testMat);
 }

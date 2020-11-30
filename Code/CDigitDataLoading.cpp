@@ -25,6 +25,7 @@ Mat CDigitDataLoading::readMyData()
     imshow(windowName, image); // Show our image inside the created window.
     waitKey(0); // Wait for any keystroke in the window
     destroyWindow(windowName); //destroy the created window
+
     return image;
 }
 
@@ -53,11 +54,11 @@ mystruct CDigitDataLoading::organizingData(Mat& img)
             Mat digitImg = (image.colRange(j, j + SZ).rowRange(i, i + SZ)).clone();
             if (j < int(0.9 * image.cols))
             {
-                trainCells.push_back(digitImg);
+                m_trainCells.push_back(digitImg);
             }
             else
             {
-                testCells.push_back(digitImg);
+                m_testCells.push_back(digitImg);
             }
             ImgCount++;
         }
@@ -71,19 +72,23 @@ mystruct CDigitDataLoading::organizingData(Mat& img)
         if (z % 450 == 0 && z != 0) {
             digitClassNumber = digitClassNumber + 1;
         }
-        trainLabels.push_back(digitClassNumber);
+        m_trainLabels.push_back(digitClassNumber);
+       // cout << "training labels : " << digitClassNumber << endl;
     }
+
     digitClassNumber = 0;
     for (int z = 0; z<int(0.1 * ImgCount); z++) {
         if (z % 50 == 0 && z != 0) {
             digitClassNumber = digitClassNumber + 1;
         }
-        testLabels.push_back(digitClassNumber);
+        m_testLabels.push_back(digitClassNumber);
     }
-    return mystruct{ trainCells, testCells };
+    cout << "size of trainlabels: " << m_trainLabels.size() << endl;
+
+    return mystruct{ m_trainCells, m_testCells, m_trainLabels, m_testLabels };
 }
 
-mystructdeskew CDigitDataLoading::labelAssigning(vector<Mat>& traincells, vector<Mat>& testcells)
+mystructdeskew CDigitDataLoading::deskewData(vector<Mat>& traincells, vector<Mat>& testcells)
 {
 
     for (int i = 0; i < traincells.size(); i++) {

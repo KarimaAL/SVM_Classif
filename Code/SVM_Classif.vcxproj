@@ -149,12 +149,14 @@
     <ClInclude Include="CDigitDataLoading.h" />
     <ClInclude Include="CHOG.h" />
     <ClInclude Include="CSVM.h" />
+    <ClInclude Include="CSVMClassifier.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CData.cpp" />
     <ClCompile Include="CDigitDataLoading.cpp" />
     <ClCompile Include="CHOG.cpp" />
     <ClCompile Include="CSVM.cpp" />
+    <ClCompile Include="CSVMClassifier.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
