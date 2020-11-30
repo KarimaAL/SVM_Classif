@@ -80,11 +80,10 @@ mystruct CDigitDataLoading::organizingData(Mat& img)
         }
         testLabels.push_back(digitClassNumber);
     }
-   // return {trainCells, testCells };
     return mystruct{ trainCells, testCells };
 }
 
-vector<Mat> CDigitDataLoading::labelAssigning(vector<Mat>& traincells, vector<Mat>& testcells)
+mystructdeskew CDigitDataLoading::labelAssigning(vector<Mat>& traincells, vector<Mat>& testcells)
 {
 
     for (int i = 0; i < traincells.size(); i++) {
@@ -93,28 +92,11 @@ vector<Mat> CDigitDataLoading::labelAssigning(vector<Mat>& traincells, vector<Ma
         deskewedTrainCells.push_back(deskewedImg);
     }
 
-
-
     for (int i = 0; i < testcells.size(); i++) {
 
         deskewedImg = deskew(testcells[i]);
         deskewedTestCells.push_back(deskewedImg);
     }
-
-    ////create Mat
-    Mat M = Mat(10, 450, CV_32FC1); //Mat M=Mat(r,c,CV_32FC1);
-    //copy vector to mat
-    memcpy(M.data, deskewedTrainCells.data(), deskewedTrainCells.size() * sizeof(float));
-    //print Mat
-    //cout << "matrix: " << M.rows << endl;
-
-
-    //String windowName = "deskewed digits"; //Name of the window
-    //namedWindow(windowName, WINDOW_NORMAL); // Create a window
-    //imshow(windowName, M); // Show our image inside the created window.
-    //waitKey(0); // Wait for any keystroke in the window
-    //destroyWindow(windowName); //destroy the created window
-
-    return deskewedTrainCells, deskewedTestCells;
+    return mystructdeskew{deskewedTrainCells, deskewedTestCells};
 }
 

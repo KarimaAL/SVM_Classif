@@ -16,7 +16,10 @@ struct mystruct {
 	vector<Mat> trainCells;
 	vector<Mat> testCells;
 };
-
+struct mystructdeskew {
+	vector<Mat> deskewedTrCells;
+	vector<Mat> deskewedTsCells;
+};
 class CDigitDataLoading
 {
 public:
@@ -25,7 +28,7 @@ public:
 	Mat readMyData();
 	Mat deskew(Mat& img);
 	mystruct organizingData(Mat& img);
-	vector<Mat> labelAssigning(vector<Mat>& traincells, vector<Mat>& testcells);
+	mystructdeskew labelAssigning(vector<Mat>& traincells, vector<Mat>& testcells);
 	int SZ = 20; //Each image is 20×20 grayscale
 	float affineFlags = WARP_INVERSE_MAP | INTER_LINEAR;
 	vector<Mat> trainCells;
@@ -35,6 +38,5 @@ public:
 	vector<Mat> deskewedTrainCells;
 	vector<Mat> deskewedTestCells;
 	Mat deskewedImg;
-
 };
 
