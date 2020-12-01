@@ -25,7 +25,7 @@ class CDigitDataLoading
 public:
 	CDigitDataLoading(); // Constructor
 	~CDigitDataLoading(); // destructor
-	Mat readMyData();
+	Mat readMyData(string pathName);
 	Mat deskew(Mat& img);
 	mystruct organizingData(Mat& img);
 	mystructdeskew deskewData(vector<Mat>& traincells, vector<Mat>& testcells);

@@ -10,16 +10,17 @@ using namespace std;
 int main(int, char**)
 {
 	cout << "OpenCV version : " << CV_VERSION << endl;
-	CData m_data;
-	CSVM m_svm;
+	//CData m_data;
+	//CSVM m_svm;
 	CDigitDataLoading image, organize,labels;
-	CHOG createHog, m_getMat, Thog, g;
-	Mat img = image.readMyData();
-	mystruct dataDiv = organize.organizingData(img);
-	dataDiv.trainLabels;
-	dataDiv.testLabels;
-	mystructdeskew deskewData = labels.deskewData(dataDiv.trainCells, dataDiv.testCells);
-	createHog.CreateTrainTestHOG(deskewData.deskewedTrCells, deskewData.deskewedTsCells, dataDiv.trainLabels, dataDiv.testLabels);
+	CHOG createHog;
+	string pathName = "digits.png";  // Path to the image
+	Mat data = image.readMyData(pathName);
+
+	//mystruct dataDiv = organize.organizingData(data);
+
+	//mystructdeskew deskewData = labels.deskewData(dataDiv.trainCells, dataDiv.testCells);
+	//createHog.CreateTrainTestHOG(deskewData.deskewedTrCells, deskewData.deskewedTsCells, dataDiv.trainLabels, dataDiv.testLabels);
 	//auto m_mat = m_getMat.ConvertVectortoMatrix(Thog.trainHOG, Thog.testHOG);
 	return 0;
 }

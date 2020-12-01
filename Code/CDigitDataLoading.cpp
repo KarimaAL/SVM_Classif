@@ -1,4 +1,5 @@
 #include "CDigitDataLoading.h"
+#include "CHOG.h"
 #include <iostream>
 
 using namespace cv;
@@ -14,18 +15,16 @@ CDigitDataLoading::~CDigitDataLoading()
     cout << "Object is being deleted" << endl;
 }
 
-Mat CDigitDataLoading::readMyData()
+Mat CDigitDataLoading::readMyData(string pathName)
 {
-	string pathName = "digits.png";  // Path to the image
 	Mat image = imread(pathName, IMREAD_GRAYSCALE); //Read the image in grayscale
     cout << image.rows << endl; // Print the size of the image
-
     String windowName = "digits"; //Name of the window
     namedWindow(windowName, WINDOW_NORMAL); // Create a window
     imshow(windowName, image); // Show our image inside the created window.
     waitKey(0); // Wait for any keystroke in the window
     destroyWindow(windowName); //destroy the created window
-
+    organizingData(image);
     return image;
 }
 
@@ -84,6 +83,8 @@ mystruct CDigitDataLoading::organizingData(Mat& img)
     }
     cout << "size of trainlabels: " << m_trainLabels.size() << endl;
 
+    deskewData(m_trainCells, m_testCells);
+
     return mystruct{ m_trainCells, m_testCells, m_trainLabels, m_testLabels };
 }
 
@@ -101,6 +102,8 @@ mystructdeskew CDigitDataLoading::deskewData(vector<Mat>& traincells, vector<Mat
         deskewedImg = deskew(testcells[i]);
         deskewedTestCells.push_back(deskewedImg);
     }
+    CHOG createHog;
+    createHog.CreateTrainTestHOG(deskewedTrainCells, deskewedTestCells, m_trainLabels, m_testLabels);
     return mystructdeskew{deskewedTrainCells, deskewedTestCells};
 }
 
