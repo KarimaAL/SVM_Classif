@@ -150,6 +150,7 @@
     <ClInclude Include="CHOG.h" />
     <ClInclude Include="CSVM.h" />
     <ClInclude Include="CSVMClassifier.h" />
+    <ClInclude Include="CSVMPrediction.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CData.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="CHOG.cpp" />
     <ClCompile Include="CSVM.cpp" />
     <ClCompile Include="CSVMClassifier.cpp" />
+    <ClCompile Include="CSVMPrediction.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -22,7 +22,7 @@ Mat CSVMClassifier :: SVMtrain(Mat& trainMat, vector<int>& trainLabels, Mat& tes
     svm->train(td);
     if (td)
     {
-        svm->save("model4.yml");
+        //svm->save("model4.yml");
         svm->predict(testMat, testResponse);
         getSVMParams(svm);
     }
