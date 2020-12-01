@@ -6,14 +6,10 @@
 
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
-//#include "opencv2/objdetect.hpp"
-//#include <opencv2/ml.hpp>
 
 using namespace cv;
 using namespace std;
 
-//vector<int> m_trainLabels;
-//vector<int> m_testLabels;
 struct mystruct {
 	vector<Mat> trainCells;
 	vector<Mat> testCells;

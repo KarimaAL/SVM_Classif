@@ -20,7 +20,6 @@ Mat CSVMClassifier :: SVMtrain(Mat& trainMat, vector<int>& trainLabels, Mat& tes
     Ptr<TrainData> td = TrainData::create(trainMat, ROW_SAMPLE, trainLabels);
     cout << "get td" << endl;
     svm->train(td);
-    //svm->trainAuto(td);
     if (td)
     {
         svm->save("model4.yml");
@@ -43,7 +42,6 @@ float CSVMClassifier:: SVMevaluate(Mat& testResponse, float& count, float& accur
 
     for (int i = 0; i < testResponse.rows; i++)
     {
-        //cout << testResponse.at<float>(i,0) << " " << testLabels[i] << endl;
         if (testResponse.at<float>(i, 0) == testLabels[i]) {
             count = count + 1;
         }

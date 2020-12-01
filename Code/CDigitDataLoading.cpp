@@ -73,7 +73,6 @@ mystruct CDigitDataLoading::organizingData(Mat& img)
             digitClassNumber = digitClassNumber + 1;
         }
         m_trainLabels.push_back(digitClassNumber);
-       // cout << "training labels : " << digitClassNumber << endl;
     }
 
     digitClassNumber = 0;

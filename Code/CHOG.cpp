@@ -76,7 +76,6 @@ Mat CHOG::ConvertVectortoMatrix(vector<vector<float> >& trainHOG, vector<vector<
     imshow(windowName, testMat); // Show our image inside the created window.
     waitKey(0); // Wait for any keystroke in the window
     destroyWindow(windowName); //destroy the created window
-    //return mystructHogMat{ trainMat, testMat };
     Mat testResponse;
     CSVMClassifier m_train;
     cout << "size of train labels :" << m_trainLabels.size() << endl;
