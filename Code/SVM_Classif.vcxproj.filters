@@ -21,6 +21,15 @@
     <ClInclude Include="CSVM.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="CDigitDataLoading.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CHOG.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="CSVMClassifier.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CData.cpp">
@@ -30,6 +39,15 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="CSVM.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CDigitDataLoading.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CHOG.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CSVMClassifier.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
