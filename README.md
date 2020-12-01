@@ -1,7 +1,7 @@
 # SVM_Classif
 Linear SVM classifier
 
-A. Basics:
+A. Basics: (CData and CSVM classes and then call the functions from the main)
 
 1) Initialize the training examples (points) in an image.
 
