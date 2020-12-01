@@ -11,6 +11,7 @@ using namespace cv::ml;
 using namespace cv;
 using namespace std;
 
+// Defining the parameters of the HOG descriptor
 HOGDescriptor hog(
     Size(20, 20), //winSize
     Size(10, 10), //blocksize
@@ -37,8 +38,6 @@ mystructhogT CHOG::CreateTrainTestHOG(vector<Mat> deskewedTrainCells, vector<Mat
     }
 
     for (int y = 0; y < deskewedTestCells.size(); y++) {
-
-        ;
         vector<Point> locations;
         hog.compute(deskewedTestCells[y], descriptorstest, Size(8, 8), Size(0, 0), locations);
         testHOG.push_back(descriptorstest);
