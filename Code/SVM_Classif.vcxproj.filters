@@ -13,48 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\HandwittenDigits">
+      <UniqueIdentifier>{b93c50b9-bece-4221-ac1d-396091f56587}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\HandwrittenDigits">
+      <UniqueIdentifier>{6584405a-d762-481f-9f1d-4568a3113114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Basics">
+      <UniqueIdentifier>{fb49934e-4e08-42b8-ac1e-64211816f361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Basics">
+      <UniqueIdentifier>{88999144-2118-4a58-8f89-34ea4c45ca53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CData.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CSVM.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="CDigitDataLoading.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\HandwrittenDigits</Filter>
     </ClInclude>
     <ClInclude Include="CHOG.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\HandwrittenDigits</Filter>
     </ClInclude>
     <ClInclude Include="CSVMClassifier.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\HandwrittenDigits</Filter>
     </ClInclude>
     <ClInclude Include="CSVMPrediction.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\HandwrittenDigits</Filter>
+    </ClInclude>
+    <ClInclude Include="CData.h">
+      <Filter>Fichiers d%27en-tête\Basics</Filter>
+    </ClInclude>
+    <ClInclude Include="CSVM.h">
+      <Filter>Fichiers d%27en-tête\Basics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CData.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="CSVM.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="CDigitDataLoading.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\HandwittenDigits</Filter>
     </ClCompile>
     <ClCompile Include="CHOG.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\HandwittenDigits</Filter>
     </ClCompile>
     <ClCompile Include="CSVMClassifier.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\HandwittenDigits</Filter>
     </ClCompile>
     <ClCompile Include="CSVMPrediction.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\HandwittenDigits</Filter>
+    </ClCompile>
+    <ClCompile Include="CData.cpp">
+      <Filter>Fichiers sources\Basics</Filter>
+    </ClCompile>
+    <ClCompile Include="CSVM.cpp">
+      <Filter>Fichiers sources\Basics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
