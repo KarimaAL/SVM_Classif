@@ -9,22 +9,15 @@ using namespace cv::ml;
 using namespace cv;
 using namespace std;
 
-Mat CSVMClassifier :: SVMtrain(Mat& trainMat, vector<int>& trainLabels, Mat& testResponse, Mat& testMat) {
-
+Mat CSVMClassifier :: SVMtrain(Mat& trainMat, vector<int>& trainLabels, Mat& testResponse, Mat& testMat) 
+{
     cout << "train label size: " << trainLabels.size() << endl;
-    Mat trainLabelsMat(trainLabels.size(), 1, CV_32SC1);
-
-    for (int i = 0; i < trainLabels.size(); i++) {
-        trainLabelsMat.at<float>(i, 0) = trainLabels[i];
-    }
-
-
     Ptr<SVM> svm = SVM::create();
     svm->setGamma(0.50625);
     svm->setC(12.5);
     svm->setKernel(SVM::RBF);
     svm->setType(SVM::C_SVC);
-    Ptr<TrainData> td = TrainData::create(trainMat, ROW_SAMPLE, trainLabelsMat);
+    Ptr<TrainData> td = TrainData::create(trainMat, ROW_SAMPLE, trainLabels);
     cout << "get td" << endl;
     svm->train(td);
     //svm->trainAuto(td);

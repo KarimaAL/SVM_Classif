@@ -84,7 +84,6 @@ Mat CHOG::ConvertVectortoMatrix(vector<vector<float> >& trainHOG, vector<vector<
     float count = 0;
     float accuracy = 0;
     CSVMClassifier ev;
-    //CSVMClassifier m_response;
     float acc =  ev.SVMevaluate(m_response, count, accuracy, m_testLabels);
     cout << "Accuracy        : " << acc << "%" << endl;
     return (trainMat, testMat);
